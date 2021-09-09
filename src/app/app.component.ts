@@ -4,6 +4,8 @@ import { Celular } from './celular';
 import { CelularService } from './celular.service';
 import { PaymentMethodService } from './payment-method.service';
 import { PaymentMethod } from './paymentMethod';
+import { Preference } from './preference';
+import { PreferenceService } from './preference.service';
 
 @Component({
   selector: 'app-root',
@@ -13,15 +15,18 @@ import { PaymentMethod } from './paymentMethod';
 export class AppComponent implements OnInit {
   title = 'tienda-celulares-frontendapp';
 
+  public selectedCelular!: Celular;
   public paymentMethods: PaymentMethod[] | undefined;
   public celulares: Celular[] | undefined;
+  public preference: Preference | undefined;
 
 
-  //constructor(private paymentMethodService: PaymentMethodService){}
-  constructor (private celularService: CelularService, private paymentMethodService: PaymentMethodService){}
+  constructor(private celularService: CelularService, 
+              private paymentMethodService: PaymentMethodService, 
+              private preferenceService: PreferenceService) { }
 
 
-  ngOnInit(){
+  ngOnInit() {
     this.getCelulares();
     this.getPaymentMethods();
   }
@@ -33,7 +38,7 @@ export class AppComponent implements OnInit {
         console.log(this.celulares);
       },
       (error: HttpErrorResponse) => {
-        alert (error.message);
+        alert(error.message);
       }
     );
   }
@@ -46,8 +51,53 @@ export class AppComponent implements OnInit {
         console.log(this.paymentMethods);
       },
       (error: HttpErrorResponse) => {
-        alert (error.message);
+        alert(error.message);
       }
     );
   }
+
+
+  public getPreference(celular: Celular): void {
+    this.preferenceService.getPreferencias(celular).subscribe(
+      (response: Preference) => {
+        this.preference = response;
+        console.log(this.preference);
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
+
+  public onOpenModal(celular: Celular): void {
+    const container = document.getElementById('main-container');
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.style.display = 'none';
+    button.setAttribute('data-bs-toggle', 'modal');
+    button.setAttribute('data-bs-target', '#modalBuyConfirmation');
+
+    container?.appendChild(button);
+    button.click();
+    this.selectedCelular = celular;
+    const confirmation_text = document.getElementById('confirmation-text');
+    if (confirmation_text != null) {
+      confirmation_text.innerHTML = "Confirma a compra do " + this.selectedCelular.modelo;
+    }
+
+  }
+
+  public onBuyProduct() {
+
+    this.getPreference(this.selectedCelular);
+    if (this.preference != undefined && this.preference != null && this.preference.id != null) {
+      window.location.href = this.preference.sandbox_init_point;
+      
+    }else{
+      console.log('Deu erro !');
+    }
+
+
+  }
+
 }
