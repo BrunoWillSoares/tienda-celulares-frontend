@@ -17,6 +17,8 @@ app.get('/*', function (req, res, next) {
       }
     }
         var fileName = req.params.name;
+        console.log('Entrada: ' + req);
+        console.log('Entrada2: ' + req.params);
         console.log('Arquivo: ' + fileName);
         console.log('Arquivo Com path: ' + path.join(fileName) + ' - ' + path.resolve(fileName));
         res.sendFile(path.join(fileName), options)
