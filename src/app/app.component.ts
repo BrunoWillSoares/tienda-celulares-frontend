@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Celular } from './celular';
 import { CelularService } from './celular.service';
 import { PaymentMethodService } from './payment-method.service';
@@ -23,7 +24,8 @@ export class AppComponent implements OnInit {
 
   constructor(private celularService: CelularService, 
               private paymentMethodService: PaymentMethodService, 
-              private preferenceService: PreferenceService) { }
+              private preferenceService: PreferenceService,
+              private router: Router) { }
 
 
   ngOnInit() {
@@ -63,6 +65,7 @@ export class AppComponent implements OnInit {
         
         if (response != undefined && response != null && response.id != null) {
           window.location.href = response.init_point;
+         // this.router.navigateByUrl(response.init_point);
           
         }else{
           alert('Falha no processo. Tente novamente, por favor!');
