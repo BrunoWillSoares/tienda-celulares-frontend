@@ -5,8 +5,6 @@
 export const environment = {
   production: false,
   apiBaseUrl: 'https://tienda-celulares.herokuapp.com/api'
-
-  
 };
 
 /*

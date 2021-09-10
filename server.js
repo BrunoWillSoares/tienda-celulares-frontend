@@ -11,5 +11,18 @@ app.get('/*',(req, res) =>
     res.sendFile('index.html', {root: 'dist/angula-heroku/'}),
 );
 
+app.get('/Success',(req, res) => 
+    res.sendFile('success.html', {root: 'dist/angula-heroku/'}),
+);
+
+app.get('/Fail',(req, res) => 
+    res.sendFile('fail.html', {root: 'dist/angula-heroku/'}),
+);
+
+app.get('/Pending',(req, res) => 
+    res.sendFile('pending.html', {root: 'dist/angula-heroku/'}),
+);
+
+
 //Start the app by listening on the default Heroku port
 app.listen(process.env.PORT || 8080);
