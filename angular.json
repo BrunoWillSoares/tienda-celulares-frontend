@@ -26,7 +26,8 @@
               "src/favicon.ico",
               "src/assets",
               "src/success.html",
-              "src/fail.html"
+              "src/fail.html",
+              "src/pending.html"
             ],
             "styles": [
               "src/styles.css"
