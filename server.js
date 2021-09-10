@@ -11,11 +11,11 @@ app.get('/',(req, res) =>
     res.sendFile('index.html', {root: 'dist/angula-heroku/'}),
 );
 
-app.get('/Success',(req, res) => 
+app.get('Success',(req, res) => 
     res.sendFile('success.html', {root: 'dist/angula-heroku/'}),
 );
 
-app.get('/success.html',(req, res) => 
+app.get('success.html',(req, res) => 
     res.sendFile('success.html', {root: 'dist/angula-heroku/'}),
 );
 
