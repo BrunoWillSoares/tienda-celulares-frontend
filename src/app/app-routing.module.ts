@@ -8,7 +8,9 @@ const routes: Routes = [
     {path:'Success', component: SuccessComponent},
     {path:'success.html', component: SuccessComponent},
     {path:'Fail', component: FailComponent},
-    {path:'Pending', component: PendingComponent}
+    {path:'fail.html', component: FailComponent},
+    {path:'Pending', component: PendingComponent},
+    {path:'pending.html', component: FailComponent}
 ];
 
 @NgModule({
