@@ -13,7 +13,7 @@ var options = {
     extensions: ['htm', 'html'],
     index: false,
     maxAge: '1d',
-    redirect: false,
+    redirect: true,
     setHeaders: function (res, path, stat) {
       res.set('x-timestamp', Date.now())
     }
