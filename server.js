@@ -17,7 +17,9 @@ app.get('/*', function (req, res, next) {
       }
     }
         var fileName = req.params.name;
-        res.sendFile(fileName, options)
+        console.log('Arquivo: ' + fileName);
+        console.log('Arquivo Com path: ' + path.join(fileName) + ' - ' + path.resolve(fileName));
+        res.sendFile(path.join(fileName), options)
     },
 );
 
