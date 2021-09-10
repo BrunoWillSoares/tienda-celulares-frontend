@@ -3,7 +3,7 @@ export interface Celular{
     marca: string;
     modelo: string;
     quantidade: number;
-    valor: number;
+    valor: string;
     caminhoImagem: string;
 
 }

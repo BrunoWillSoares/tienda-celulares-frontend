@@ -28,7 +28,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.getCelulares();
-    this.getPaymentMethods();
+    //this.getPaymentMethods();
   }
 
   public getCelulares(): void {
@@ -56,17 +56,27 @@ export class AppComponent implements OnInit {
     );
   }
 
-
-  public getPreference(celular: Celular): void {
-    this.preferenceService.getPreferencias(celular).subscribe(
+  public getPreference(celular: Celular): Preference {
+    this.preferenceService.getPreferencias(celular).toPromise()
+    .then(
       (response: Preference) => {
-        this.preference = response;
-        console.log(this.preference);
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-      }
-    );
+        
+        if (response != undefined && response != null && response.id != null) {
+          window.location.href = response.init_point;
+          
+        }else{
+          alert('Falha no processo. Tente novamente, por favor!');
+        }
+        console.log(response);
+        return response;
+      })
+      .catch(
+        (error: HttpErrorResponse) => {
+          alert(error.message);
+        }
+      );
+
+    return null as any;
   }
 
   public onOpenModal(celular: Celular): void {
@@ -88,16 +98,7 @@ export class AppComponent implements OnInit {
   }
 
   public onBuyProduct() {
-
     this.getPreference(this.selectedCelular);
-    if (this.preference != undefined && this.preference != null && this.preference.id != null) {
-      window.location.href = this.preference.sandbox_init_point;
-      
-    }else{
-      console.log('Deu erro !');
-    }
-
-
   }
 
 }
