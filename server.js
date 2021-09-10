@@ -7,6 +7,10 @@ const app = express();
 //Serve only the static files from the dist directory
 app.use(express.static('./dist/tienda-celulares-frontendapp'));
 
+app.use('/Success', express.static('./dist/tienda-celulares-frontendapp/success.html'));
+
+app.use('/success.html', express.static('./dist/tienda-celulares-frontendapp/success.html'));
+
 app.get('/',(req, res) => 
     res.sendFile('index.html', {root: 'dist/angula-heroku/'}),
 );
