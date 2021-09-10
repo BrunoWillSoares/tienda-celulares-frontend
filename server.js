@@ -13,14 +13,11 @@ var options = {
     extensions: ['htm', 'html'],
     index: false,
     maxAge: '1d',
-    redirect: true,
-    setHeaders: function (res, path, stat) {
-      res.set('x-timestamp', Date.now())
-    }
+    redirect: true
   }
 
 //Serve only the static files from the dist directory
-app.use(express.static('./dist/tienda-celulares-frontendapp', options));
+app.use(express.static('./dist/tienda-celulares-frontendapp'));
 
 /*
 app.get('/*', function (req, res, next) {
