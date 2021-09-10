@@ -5,7 +5,7 @@ const path = require('path');
 const app = express();
 
 app.use('/app',express.static(express.static(__dirname)));
-app.use('/success',express.static(express.static(__dirname + '/success')));
+app.use('/success',express.static(express.static(path.join(__dirname ,'success'))));
 //app.use('/success',express.static('./dist/tienda-celulares-frontendapp'));
 
 
