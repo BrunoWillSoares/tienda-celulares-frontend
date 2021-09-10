@@ -4,8 +4,13 @@ const path = require('path');
 
 const app = express();
 
+app.use('/app',express.static(express.static(__dirname)));
+app.use('/success',express.static(express.static(__dirname + '/success')));
+//app.use('/success',express.static('./dist/tienda-celulares-frontendapp'));
+
+
 //Serve only the static files from the dist directory
-//app.use(express.static('./dist/tienda-celulares-frontendapp'));
+app.use(express.static('./dist/tienda-celulares-frontendapp'));
 
 /*
 app.get('/*', function (req, res, next) {
