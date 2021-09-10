@@ -7,6 +7,9 @@ const app = express();
 //Serve only the static files from the dist directory
 app.use(express.static('./dist/tienda-celulares-frontendapp'));
 app.use('/Success',express.static('./dist/tienda-celulares-frontendapp/'));
+app.use('/Fail',express.static('./dist/tienda-celulares-frontendapp/'));
+app.use('/Pending',express.static('./dist/tienda-celulares-frontendapp/'));
+app.use('/success.html',express.static('./dist/tienda-celulares-frontendapp/'));
 
 /*
 app.get('/*', function (req, res, next) {
