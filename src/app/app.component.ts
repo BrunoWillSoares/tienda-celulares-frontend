@@ -65,8 +65,7 @@ export class AppComponent implements OnInit {
         
         if (response != undefined && response != null && response.id != null) {
           window.location.href = response.init_point;
-         // this.router.navigateByUrl(response.init_point);
-          
+        
         }else{
           alert('Falha no processo. Tente novamente, por favor!');
         }
