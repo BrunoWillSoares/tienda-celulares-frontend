@@ -67,7 +67,7 @@ export class AppComponent implements OnInit {
           window.location.href = response.init_point;
         
         }else{
-          alert('Falha no processo de pagamento. Tente novamente, por favor!');
+          alert('Falha no processo. Tente novamente, por favor!');
         }
         console.log(response);
         return response;
