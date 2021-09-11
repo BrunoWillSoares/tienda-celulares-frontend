@@ -50,7 +50,7 @@ export class AppComponent implements OnInit {
     this.paymentMethodService.getPaymentMethods().subscribe(
       (response: PaymentMethod[]) => {
         this.paymentMethods = response;
-        console.log(this.paymentMethods);
+        //console.log(this.paymentMethods);
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
