@@ -37,7 +37,7 @@ export class AppComponent implements OnInit {
     this.celularService.getCelulares().subscribe(
       (response: Celular[]) => {
         this.celulares = response;
-        console.log(this.celulares);
+        //console.log(this.celulares);
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
